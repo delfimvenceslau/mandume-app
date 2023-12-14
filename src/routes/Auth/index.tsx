@@ -8,17 +8,21 @@ import SingIn from '@screens/SingIn';
 const Stack = createStackNavigator();
 export default function AuthNavigation() {
  return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+    >
+    <Stack.Screen 
+    name="SingIn" 
+    component={SingIn} 
+    />
     <Stack.Screen 
     name="Login" 
     component={Login}
     options={{
       headerShown: false,
     }}
-    />
-    <Stack.Screen 
-    name="SingIn" 
-    component={SingIn} 
     />
   </Stack.Navigator>
   );

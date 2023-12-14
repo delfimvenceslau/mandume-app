@@ -6,7 +6,11 @@ import Profile from '@screens/Profile';
 const Stack = createStackNavigator();
 export default function StackNavigationRouter() {
  return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}
+    >
     <Stack.Screen 
     name="Home" 
     component={Home}

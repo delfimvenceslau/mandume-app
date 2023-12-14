@@ -8,10 +8,28 @@ interface ButtonProps extends TouchableOpacityProps{
 export default function Button({title, icon, ...rest}: ButtonProps) {
  return (
    <TouchableOpacity 
-   style={styles.button} 
+   className="
+   bg-secondary
+   rounded-3xl
+   p-3
+   items-center
+   flex-row
+   h-14
+   text-center
+   justify-between
+   self-center
+   w-56
+   "
    {...rest}
    >
-    <Text>{title}</Text>
+    <Text 
+    className="
+    text-lg
+    italic
+    "
+    >
+      {title}
+      </Text>
     <Ionicons 
     name={icon}
     color={'black'} 
@@ -21,16 +39,3 @@ export default function Button({title, icon, ...rest}: ButtonProps) {
    </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button:{
-    backgroundColor: 'red',
-    padding: 15
-  }
-});
