@@ -1,11 +1,13 @@
 import Button from '@components/Button';
 import { useNavigation } from '@react-navigation/native';
-import { FlatList, SafeAreaView, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, ScrollView, Text, View } from 'react-native';
 import {Ionicons, Feather} from "@expo/vector-icons";
 import Avatar from '@components/Avatar';
 import SearchInput from '@components/SearchInput';
 import ImagePB from '@components/ImagePB';
 import Categorias from '@components/Categorias';
+import Recomendacoes from '@components/Recomendacoes';
+import Estabelecimentos from '@components/Estabelecimentos';
 
 export default function Home() {
 
@@ -67,7 +69,38 @@ export default function Home() {
       categoria: 'Bares'
     },
   ]
+
+  const recomendacoes = [
+    {
+      id:"1",
+      recomendacao: "Prato do dia"
+    },
+    {
+      id:"2",
+      recomendacao: "Prato do dia"
+    },
+    {
+      id:"3",
+      recomendacao: "Prato do dia"
+    },
+    {
+      id:"4",
+      recomendacao: "Prato do dia"
+    },
+    {
+      id:"5",
+      recomendacao: "Prato do dia"
+    },
+    {
+      id:"6",
+      recomendacao: "Prato do dia"
+    },
+  ]
  return (
+  <>
+  <ScrollView
+  showsVerticalScrollIndicator={false}
+  >
    <SafeAreaView className='flex-1 items-center bg-white text-black'>
     <View
     className="
@@ -77,12 +110,14 @@ export default function Home() {
     items-center
     w-96
     p-3
+    fixed
     "
     >
       <Avatar/>
       <Text>Delfim Venceslau</Text>
       <Feather name='align-right' size={30}/>
     </View>
+    
     <SearchInput/>
     
     <View className='h-44 mt-3'>
@@ -93,6 +128,10 @@ export default function Home() {
       height: 10
     }}
     showsHorizontalScrollIndicator={false}
+    contentContainerStyle={{
+      paddingStart: 15,
+      paddingEnd: 15
+    }}
     horizontal
     data={data}
     renderItem={({item}) => (
@@ -120,7 +159,7 @@ export default function Home() {
       paddingEnd: 15
     }}
     ItemSeparatorComponent={() => (
-      <View className='ml-3'>
+      <View className='ml-2'>
 
       </View>
     )}
@@ -130,13 +169,65 @@ export default function Home() {
     <View className="
     justify-start
     items-start
-    right-32
-    mt-10
     "
     >
-      <Text className="text-lg">Recomendações</Text>
+      <Text 
+      className="
+      text-lg
+      ml-7
+      "
+      >Recomendações
+      </Text>
+
+      <View
+      className="
+      justify-center
+      w-96
+      "
+      >
+      <FlatList
+      className='p-4'
+      data={recomendacoes}
+      renderItem={({item}) => (
+        <Recomendacoes />
+      )}
+      keyExtractor={item => item.id}
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{
+        paddingStart: 15,
+        paddingEnd: 15
+      }}
+      ItemSeparatorComponent={() => (
+        <View className='ml-2'>
+
+        </View>
+      )}
+      />
+      </View>
     </View>
 
+    
+  <View style={{ 
+    flex: 1, 
+    width: '100%', 
+    height: '30vh', 
+    backgroundColor:'green',
+}}>
+  <Text className="text-lg ml-4">Estabelecimentos</Text>
+
+    <FlatList
+      style={{ flex: 1, padding: 4 }}
+      data={recomendacoes}
+      renderItem={({ item }) => <Estabelecimentos />}
+      keyExtractor={(item) => item.id}
+      showsVerticalScrollIndicator={false}
+      ItemSeparatorComponent={() => <View style={{ marginLeft: 2 }} />}
+    />
+  </View>
+    
    </SafeAreaView>
+   </ScrollView>
+   </>
   );
 }

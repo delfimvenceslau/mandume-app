@@ -10,7 +10,7 @@ export default function AuthNavigation() {
  return (
     <Stack.Navigator
     screenOptions={{
-      headerShown: false,
+      
     }}
     >
     <Stack.Screen 
@@ -21,7 +21,6 @@ export default function AuthNavigation() {
     name="Login" 
     component={Login}
     options={{
-      headerShown: false,
     }}
     />
   </Stack.Navigator>
